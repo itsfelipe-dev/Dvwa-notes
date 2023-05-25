@@ -39,3 +39,5 @@ set lhost 127.0.0.1
 ### Sql injection 
 sqlmap -r request.txt -p id --dump
 
+### 
+tldr 
