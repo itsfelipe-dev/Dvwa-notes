@@ -1,5 +1,5 @@
 #!/usr/bin/python
 
-text = '00 00 00 18 66 74 79 70 6D 70 34 32'
+text = '7468690f732069730f206d7920746578740f'
 print(bytes.fromhex(text))
 
