@@ -41,3 +41,23 @@ sqlmap -r request.txt -p id --dump
 
 ### 
 tldr 
+
+
+# Wireshark Settings
+## Filters
+### Suspect TCP traffic 
+    - Filter tcp syn = True and filter with non ack 
+        (This help to identify the most suspect tcp traffic) ( Adding graph. Top menu -> statics -> IO/Graph  )  
+        - (tcp.flags.syn == 1) &&  (!(tcp.flags.ack == 0))
+
+    - Other way to filter suspect TCP traffic
+        - (tcp.flags.urg == 0) &&  (tcp.flags.push == 0) && (tcp.flags.fin == 0)
+
+### Suspect SSH traffic 
+    Filter by port 22 - port of ssh -- tcp.port == 22
+
+### Filter Executable files 
+    - Filter by filetype  
+        - http.request.uri matches "/*.txt"
+    - Filter some executable files 
+        - http contains 'DOS'
