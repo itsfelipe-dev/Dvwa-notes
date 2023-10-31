@@ -1,7 +1,8 @@
 #!/bin/sh
-input="GUVF NJRFBZR PVCURE OEB"
+input="AJGTD"
 
 for i in $(seq 25); do
-    echo $i $input | tr $(printf %${i}s | tr ' ' '.')\A-Z A-ZA-Z
+    echo  "\n"
+    echo $i "|" $input | tr $(printf %${i}s | tr ' ' '.')\A-Z A-ZA-Z
 done
 

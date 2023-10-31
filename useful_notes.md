@@ -43,6 +43,15 @@ sqlmap -r request.txt -p id --dump
 tldr 
 
 
+# OpenVas
+sudo gvm-setup
+sudo gvm-start 
+
+# Nessus 
+sudo systemctl tart nessusd.service
+
+
+
 # Wireshark Settings
 ## Filters
 ### Suspect TCP traffic 
@@ -53,6 +62,11 @@ tldr
     - Other way to filter suspect TCP traffic
         - (tcp.flags.urg == 0) &&  (tcp.flags.push == 0) && (tcp.flags.fin == 0)
 
+	- Filter open ports if doing nmap scan 
+	 	- 'tcp.flags.syn == 1 and tcp.flags.ack == 1 and ip.dst == 10.0.2.15'
+	 	    match request and response succesfully  
+	 	    
+	 	    
 ### Suspect SSH traffic 
     Filter by port 22 - port of ssh -- tcp.port == 22
 
